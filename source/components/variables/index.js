@@ -1,9 +1,9 @@
-import colors from './variables/colors';
-import durations from './variables/durations';
-import easings from './variables/easings';
-import sizes from './variables/sizes';
-import weights from './variables/weights';
-import widths from './variables/widths';
+import colors from './colors';
+import durations from './durations';
+import easings from './easings';
+import sizes from './sizes';
+import weights from './weights';
+import widths from './widths';
 
 const defs = {
   colors: colors,
@@ -14,8 +14,7 @@ const defs = {
   widths: widths
 };
 
-export default const variables = 
-  Object.keys(defs).reduce(walk, { });
+export default variables = Object.keys(defs).reduce(walk, { });
 
 function walk(memo, key, i, all) {
   memo[key] = Object.keys(all[key]).reduce(unwrap, { });
