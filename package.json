@@ -1,0 +1,25 @@
+{
+  "name": "atlas",
+  "version": "1.0.0",
+  "description": "History for everybody.",
+  "engines": {
+    "node": "5.x"
+  },
+  "scripts": {
+    "start": "forever start ./server/start.js",
+    "test": "tape test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://krambuhl@github.com/il7/atlas.git"
+  },
+  "author": "Evan Krambuhl <thekrambuhl@gmail.com> (http://il7.io)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/il7/atlas/issues"
+  },
+  "homepage": "https://github.com/il7/atlas#readme",
+  "dependencies": {
+    "color": "^0.11.1"
+  }
+}
