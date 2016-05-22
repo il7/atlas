@@ -1,4 +1,4 @@
-import { colors } from '../../variables';
+import { colors } from '../variables';
 
 export default const Card = props => {
   return <Container>
@@ -10,10 +10,10 @@ export default const Card = props => {
 
 // container
 export const Container = props => {
-  return <div style={Container.styles}>{props.children}</div>
+  return <div style={ Container.styles(props) }>{ props.children }</div>
 }
 
-Container.styles = {
+Container.styles = props => {
   display: 'block',
   backgroundColor: colors.light,
 
@@ -25,10 +25,10 @@ Container.styles = {
 
 // header
 export const Header = props => {
-  return <header style={Header.styles}>{props.children}</header>
+  return <header style={ Header.styles(props) }>{ props.children }</header>
 }
 
-Header.styles = {
+Header.styles = props => {
   backgroundColor: colors.dark5,
 
   ':hover': {

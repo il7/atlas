@@ -25,6 +25,7 @@ function walk(memo, key, i, all) {
 function unwrap(memo, key, i, all) {
   memo[key] = all[key];
 
+  // if the value is a scale, unwrap it
   if (typeof memo[key] === 'function') {
     memo[key] = memo[key]();
   }
