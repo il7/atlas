@@ -19,8 +19,7 @@ const watchOpts = {
 
 module.exports = function(opts = {}) {
   const b = browserify(Object.assign(
-    { entries: opts.entries
-    , extension: [ "jsx" ] },
+    { entries: opts.entries },
     defaultOpts,
     opts.watch ? watchOpts : {}
   ));
