@@ -1,4 +1,5 @@
 const isProduction = process.env.NODE_ENV === 'production';
+const browserSync = require('./browserSync');
 
 const gulp = require('gulp');
 const gulpif = require('gulp-if');
@@ -44,7 +45,8 @@ module.exports = function(opts = {}) {
       .pipe(sourcemaps.init({ loadMaps: true }))
       // .pipe(gulpif(isProduction, uglify()))
       .pipe(sourcemaps.write('./'))
-      .pipe(gulp.dest(opts.dest));
+      .pipe(gulp.dest(opts.dest))
+      .pipe(browserSync.stream());
   }
 
   return bundle();

@@ -7,10 +7,13 @@ const del = require('del');
 const newer = require('gulp-newer');
 const babel = require("gulp-babel");
 
+const browserSync = require('./build/browserSync');
 const createBundle = require('./build/createBundle');
 
 // pre
 gulp.task('clean', () => del(paths.dest.root));
+
+
 
 
 // static pages
@@ -67,8 +70,16 @@ gulp.task('server-watch', function() {
 
 
 // watch
+gulp.task('browser-sync', function (done) {
+  browserSync.init({
+    proxy: 'http://localhost:5000/'
+  });
+
+  done();
+});
+
 gulp.task('develop', gulp.series(
-  gulp.parallel('clean'),
+  gulp.parallel('clean', 'browser-sync'),
   gulp.parallel('assets', 'static', 'server'),
   gulp.parallel('assets-watch', 'static-watch', 'scripts-watch', 'server-watch')
 ));
