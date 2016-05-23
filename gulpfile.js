@@ -1,12 +1,5 @@
 const isProduction = process.env.NODE_ENV === 'production';
-const paths = require('./package.json').paths
-const babelConf = {
-  "presets": ["es2015", "react"],
-  "plugins": [
-    "transform-class-properties",
-    "transform-decorators-legacy"
-  ]
-};
+const paths = require('./package.json').paths;
 
 const path = require('path');
 const gulp = require('gulp');
@@ -45,24 +38,18 @@ gulp.task('assets-watch', function() {
 
 
 // scripts
+const scriptsOpts = { 
+  entries: path.join(paths.src.root, 'main.jsx'),
+  dest: paths.dest.assets,
+  name: 'bundle.js'
+};
+
 gulp.task('scripts', function() { 
-  return createBundle({ 
-    entries: path.join(paths.src.root, 'main.jsx'),
-    dest: paths.dest.assets,
-    name: 'bundle.js',
-    watch: false,
-    babelConf: babelConf
-  });
+  return createBundle(Object.assign(scriptsOpts, { watch: false }));
 });
 
 gulp.task('scripts-watch', function() { 
-  return createBundle({ 
-    entries: path.join(paths.src.root, 'main.jsx'),
-    dest: paths.dest.assets,
-    name: 'bundle.js',
-    watch: true,
-    babelConf: babelConf
-  });
+  return createBundle(Object.assign(scriptsOpts, { watch: true }));
 });
 
 

@@ -1,32 +1,33 @@
 import Radium from 'radium';
-import { Component } from 'react';
-import { colors } from '../variables';
+import React from 'react';
+import { sizes, colors } from '../variables';
 
 @Radium 
-export default class extends Component {
-  render(props) {
-    return <CardContainer>
-      <CardHeader>{props.title}</CardHeader>
-      {props.children}
-    </CardContainer>
+export default class extends React.Component {
+  render() {
+    return <Container>
+      <Header>{this.props.title}</Header>
+      {this.props.children}
+    </Container>
   }
 }
 
 
 // container
 @Radium
-export class Container extends Component {
-  render(props) {
-    return <div style={this.styles(props)}>{props.children}</div>
+export class Container extends React.Component {
+  render() {
+    return <div style={this.styles()}>{this.props.children}</div>
   }
 
-  styles(props) {
+  styles() {
     return {
       display: 'block',
+      padding: sizes.space(),
       backgroundColor: colors.light,
 
       ':hover': {
-        backgroundColor: colors.dark5,
+        backgroundColor: colors.dark10,
       }
     }
   };
@@ -35,17 +36,17 @@ export class Container extends Component {
 
 // header
 @Radium
-export class Header extends Component {
-  render(props) {
-    return <header style={this.styles(props)}>{props.children}</header>
+export class Header extends React.Component {
+  render() {
+    return <header style={this.styles()}>{this.props.children}</header>
   }
 
-  styles(props) {
+  styles() {
     return {
-      backgroundColor: colors.dark5,
+      backgroundColor: colors.blue,
 
       ':hover': {
-        backgroundColor: colors.dark10,
+        backgroundColor: colors.red,
       } 
     }
   };

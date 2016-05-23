@@ -1,4 +1,5 @@
 import Card from './components/display/card.jsx';
-import ReactDom from 'react-dom';
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-ReactDom.render(<Card title="boogy woogy" />, '#application');
+ReactDOM.render(<Card title="hello" />,  document.getElementById('application'));

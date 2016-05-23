@@ -1,5 +1,9 @@
+const isProduction = process.env.NODE_ENV === 'production';
+
 const gulp = require('gulp');
+const gulpif = require('gulp-if');
 const gutil = require('gulp-util');
+const uglify = require('gulp-uglify');
 const sourcemaps = require('gulp-sourcemaps');
 const source = require('vinyl-source-stream');
 const buffer = require('vinyl-buffer');
@@ -24,7 +28,7 @@ module.exports = function(opts = {}) {
     opts.watch ? watchOpts : {}
   ));
 
-  b.transform(babelify, opts.babelConf);
+  b.transform(babelify);
   b.on('log', gutil.log);
 
   if (opts.watch) {
@@ -38,6 +42,7 @@ module.exports = function(opts = {}) {
       .pipe(source(opts.name))
       .pipe(buffer())
       .pipe(sourcemaps.init({ loadMaps: true }))
+      // .pipe(gulpif(isProduction, uglify()))
       .pipe(sourcemaps.write('./'))
       .pipe(gulp.dest(opts.dest));
   }
