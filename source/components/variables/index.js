@@ -26,6 +26,6 @@ function unwrap(memo, key) {
   if (memo[key] instanceof Color) {
     memo[key] = memo[key].rgbString();
   }
-  
+
   return memo;
 }
