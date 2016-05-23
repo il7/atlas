@@ -14,8 +14,6 @@ const createBundle = require('./build/createBundle');
 gulp.task('clean', () => del(paths.dest.root));
 
 
-
-
 // static pages
 gulp.task('static', function() {
   return gulp.src(path.join(paths.src.static, '**/*'))
@@ -70,7 +68,7 @@ gulp.task('server-watch', function() {
 
 
 // watch
-gulp.task('browser-sync', function (done) {
+gulp.task('browser-sync', function(done) {
   browserSync.init({
     proxy: 'http://localhost:5000/'
   });
