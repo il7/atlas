@@ -2,4 +2,4 @@ import Card from './components/display/card.jsx';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-ReactDOM.render(<Card title="hello" />,  document.getElementById('application'));
+ReactDOM.render(<Card />,  document.getElementById('application'));

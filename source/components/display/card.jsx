@@ -1,6 +1,6 @@
 import Radium from 'radium';
 import React from 'react';
-import { sizes, colors } from '../variables';
+import { sizes, colors, durations, easings } from '../variables';
 import scale from 'scale-unit'
 
 @Radium
@@ -8,9 +8,9 @@ export default class extends React.Component {
   render() {
     const { props, state } = this;
 
-    return <div style={ styles.container(props) }>
-      <a href="#" key="header" style={ styles.header(props) }>
-        {props.title}
+    return <div style={ styles.container(props, state) }>
+      <a href="#" key="header" style={ styles.header(props, state) }>
+        Hello friend
       </a>
       {props.children}
     </div>
@@ -18,17 +18,18 @@ export default class extends React.Component {
 }
 
 export const styles = {
-  container: props => ({
+  container: (props, state) => ({
 
   }),
 
-  header: props => ({
+  header: (props, state) => ({
     display: 'block',
     padding: sizes.space(),
 
     fontFamily: 'sans-serif',
     fontSize: sizes.text(),
     textDecoration: 'none',
+    transition: `${durations.fast} ${easings.normal} all`,
 
     backgroundColor: colors.light,
     color: colors.dark,
@@ -39,8 +40,7 @@ export const styles = {
 
     ':active': {
       backgroundColor: colors.red,
-      color: colors.dark,
-      textDecoration: 'underline'
+      color: colors.light
     }
   })
 }

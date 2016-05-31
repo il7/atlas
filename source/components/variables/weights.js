@@ -1,7 +1,5 @@
-import scale from 'scale-unit';
-
-export const text = scale(300);
-export const light = scale(300);
-export const normal = scale(400);
-export const bold = scale(500);
-export const heavy = scale(600);
+export const text = 300;
+export const light = 300;
+export const normal = 400;
+export const bold = 500;
+export const heavy = 600;
